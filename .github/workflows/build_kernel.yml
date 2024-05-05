@@ -1,0 +1,26 @@
+name: Build Kernel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone kernel source
+        uses: actions/checkout@v4
+        with:
+          repository: 'https://github.com/LineageOS/android_kernel_xiaomi_surya'
+          ref: 'lineage-21'
+
+      - name: Cloning proton-clang
+        uses: actions/checkout@v4
+        with:
+          repository: 'https://github.com/kdrag0n/proton-clang'
+      
+      - name: Building
+        run: |
+          echo "Hello world!"
